@@ -1,3 +1,4 @@
+"""Это документация для вашего модуля."""
 import json
 import re
 from http import HTTPStatus
@@ -64,6 +65,7 @@ def test_link_connection(
         deploy_info_file_content: dict[str, str],
         link_key: str
 ) -> None:
+    """Make a safe."""
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                link_key)
     response = _make_safe_request(link)
@@ -96,6 +98,7 @@ def test_projects_on_same_ip(
         deploy_info_file_content: dict[str, str],
         kittygram_link_key: str, taski_link_key: str
 ) -> None:
+    """Make a safe."""
     links = [
         _get_validated_link(deploy_file_info, deploy_info_file_content,
                             link_key)
@@ -117,6 +120,7 @@ def test_kittygram_static_is_available(
         deploy_info_file_content: dict[str, str],
         kittygram_link_key: str
 ) -> None:
+    """Make a safe."""
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                kittygram_link_key)
     response = _make_safe_request(link)
@@ -139,6 +143,7 @@ def test_kittygram_api_available(
         deploy_info_file_content: dict[str, str],
         kittygram_link_key: str
 ) -> None:
+    """Make a safe."""
     link = _get_validated_link(deploy_file_info, deploy_info_file_content,
                                kittygram_link_key)
     signup_link = f'{link}/api/users/'

@@ -1,3 +1,4 @@
+"""Это документация для вашего модуля."""
 from http import HTTPStatus
 from pathlib import Path
 
@@ -21,6 +22,7 @@ def test_dockerhub_images_exist(
         deploy_info_file_content: dict[str, str],
         dockerhub_username_key: str
         ) -> None:
+    """Make a safe."""
     common_part_of_link_to_docker_hub = (
         'https://hub.docker.com/v2/namespaces/{username}/repositories/{image}/'
     )

@@ -1,3 +1,4 @@
+"""Brief description of YourClass."""
 from http import HTTPStatus
 
 from django.contrib.auth import get_user_model
@@ -6,7 +7,10 @@ from rest_framework.test import APIClient
 
 
 class CatsAPITestCase(TestCase):
+    """Brief description of YourClass."""
+
     def setUp(self):
+        """Brief description of YourClass."""
         User = get_user_model()
         self.user = User.objects.create_user(username='auth_user')
         self.client = APIClient()

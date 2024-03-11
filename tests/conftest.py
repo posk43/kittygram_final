@@ -1,3 +1,4 @@
+"""Это документация для вашего модуля."""
 import re
 from pathlib import Path
 
@@ -27,46 +28,55 @@ for dir_name in (BACKEND_DIR_NAME, FRONTEND_DIR_NAME, NGINX_DIR_NAME):
 
 @pytest.fixture(scope='session')
 def backend_dir_info() -> tuple[Path, str]:
+    """Return Dockerfile name: str."""
     return (BASE_DIR / BACKEND_DIR_NAME, BACKEND_DIR_NAME)
 
 
 @pytest.fixture(scope='session')
 def dockerfile_name() -> str:
+    """Return Dockerfile name: str."""
     return DOCKERFILE_NAME
 
 
 @pytest.fixture(scope='session')
 def nginx_dir_info() -> tuple[Path, str]:
+    """Return Dockerfile name: str."""
     return (BASE_DIR / NGINX_DIR_NAME, NGINX_DIR_NAME)
 
 
 @pytest.fixture(scope='session')
 def expected_nginx_files() -> set[str]:
+    """Return Dockerfile name: str."""
     return {'nginx.conf', 'Dockerfile'}
 
 
 @pytest.fixture(scope='session')
 def dockerhub_username_key() -> str:
+    """Return Dockerfile name: str."""
     return DOCKERHUB_USERNAME_KEY
 
 
 @pytest.fixture
 def base_dir() -> Path:
+    """Return Dockerfile name: str."""
     return BASE_DIR
 
 
 @pytest.fixture
 def workflow_file_name() -> str:
+    """Return Dockerfile name: str."""
     return WORKFLOW_FILE
 
 
 @pytest.fixture
 def docker_compose_prod_file_name() -> str:
+    """Return Dockerfile name: str."""
     return DOCKER_COMPOSE_PROD_FILE_NAME
 
 
 @pytest.fixture(scope='session')
 def deploy_file_info() -> tuple[Path, str]:
+    """Return Dockerfile name: str."""
     deploy_info_file = BASE_DIR / DEPLOY_INFO_FILE_NAME
     assert deploy_info_file.is_file(), (
         f'Убедитесь, что в корневой директории проекта создан файл '
@@ -79,6 +89,7 @@ def deploy_file_info() -> tuple[Path, str]:
 def deploy_info_file_content(
         deploy_file_info: tuple[Path, str]
 ) -> dict[str, str]:
+    """Fixture to retrieve content from a deploy info file."""
     path, relative_path = deploy_file_info
     with open(path, 'r', encoding='utf-8', errors='ignore') as f:
         file_content = {}
@@ -100,6 +111,7 @@ def deploy_info_file_content(
 
 @pytest.fixture(scope='session')
 def expected_deploy_info_file_content() -> dict[str, str]:
+    """Return Dockerfile name: str."""
     return {
         'repo_owner': 'ваше имя пользователя на GitHub',
         TASKI_DOMAIN_KEY: 'ссылка для доступа к проекту `Taski`',
@@ -110,19 +122,23 @@ def expected_deploy_info_file_content() -> dict[str, str]:
 
 @pytest.fixture(params=(TASKI_DOMAIN_KEY, KITTYGRAM_DOMAIN_KEY))
 def link_key(request) -> str:
+    """Return Dockerfile name: str."""
     return request.param
 
 
 @pytest.fixture(scope='session')
 def link_keys() -> tuple[str, str]:
+    """Return Dockerfile name: str."""
     return (KITTYGRAM_DOMAIN_KEY, TASKI_DOMAIN_KEY)
 
 
 @pytest.fixture(scope='session')
 def kittygram_link_key() -> str:
+    """Return Dockerfile name: str."""
     return KITTYGRAM_DOMAIN_KEY
 
 
 @pytest.fixture(scope='session')
 def taski_link_key() -> str:
+    """Return Dockerfile name: str."""
     return TASKI_DOMAIN_KEY

@@ -1,3 +1,4 @@
+"""Это документация для вашего модуля."""
 import base64
 import datetime as dt
 
@@ -9,10 +10,14 @@ from .models import Achievement, AchievementCat, Cat
 
 
 class Hex2NameColor(serializers.Field):
+    """Это документация для вашего модуля."""
+
     def to_representation(self, value):
+        """Это документация для вашего модуля."""
         return value
 
     def to_internal_value(self, data):
+        """Это документация для вашего модуля."""
         try:
             data = webcolors.hex_to_name(data)
         except ValueError:
@@ -21,15 +26,22 @@ class Hex2NameColor(serializers.Field):
 
 
 class AchievementSerializer(serializers.ModelSerializer):
+    """Это документация для вашего модуля."""
+
     achievement_name = serializers.CharField(source='name')
 
     class Meta:
+        """Это документация для вашего модуля."""
+
         model = Achievement
         fields = ('id', 'achievement_name')
 
 
 class Base64ImageField(serializers.ImageField):
+    """Это документация для вашего модуля."""
+
     def to_internal_value(self, data):
+        """Это документация для вашего модуля."""
         if isinstance(data, str) and data.startswith('data:image'):
             format, imgstr = data.split(';base64,')
             ext = format.split('/')[-1]
@@ -40,6 +52,8 @@ class Base64ImageField(serializers.ImageField):
 
 
 class CatSerializer(serializers.ModelSerializer):
+    """Это документация для вашего модуля."""
+
     achievements = AchievementSerializer(required=False, many=True)
     color = Hex2NameColor()
     age = serializers.SerializerMethodField()
@@ -50,6 +64,8 @@ class CatSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
+        """Это документация для вашего модуля."""
+
         model = Cat
         fields = (
             'id', 'name', 'color', 'birth_year', 'achievements',
@@ -58,14 +74,17 @@ class CatSerializer(serializers.ModelSerializer):
         read_only_fields = ('owner',)
 
     def get_image_url(self, obj):
+        """Это документация для вашего модуля."""
         if obj.image:
             return obj.image.url
         return None
 
     def get_age(self, obj):
+        """Это документация для вашего модуля."""
         return dt.datetime.now().year - obj.birth_year
 
     def create(self, validated_data):
+        """Это документация для вашего модуля."""
         if 'achievements' not in self.initial_data:
             cat = Cat.objects.create(**validated_data)
             return cat
@@ -81,6 +100,7 @@ class CatSerializer(serializers.ModelSerializer):
         return cat
 
     def update(self, instance, validated_data):
+        """Это документация для вашего модуля."""
         instance.name = validated_data.get('name', instance.name)
         instance.color = validated_data.get('color', instance.color)
         instance.birth_year = validated_data.get(

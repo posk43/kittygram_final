@@ -1,3 +1,4 @@
+"""Это документация для вашего модуля."""
 from pathlib import Path
 from typing import Union
 
@@ -6,6 +7,7 @@ import yaml
 
 def test_infra_files_exist(nginx_dir_info: tuple[Path, str],
                            expected_nginx_files: set[str]):
+    """Make a safe."""
     path, dir_name = nginx_dir_info
     nginx_dir_content = {obj.name for obj in path.glob('*') if obj.is_file()}
     missing_files = expected_nginx_files - nginx_dir_content
@@ -21,6 +23,7 @@ def test_deploy_info_file_content(
         deploy_info_file_content: dict[str, str],
         expected_deploy_info_file_content: dict[str, str]
 ):
+    """Make a safe."""
     _, relative_path = deploy_file_info
     missing_content = {
         key: value for key, value in expected_deploy_info_file_content.items()
@@ -38,6 +41,7 @@ def test_deploy_info_file_content(
 
 def test_backend_dockerfile_exists(backend_dir_info: tuple[Path, str],
                                    dockerfile_name: str):
+    """Make a safe."""
     path, relative_path = backend_dir_info
     assert (path / dockerfile_name).is_file(), (
         f'Убедитесь, что в директории `{relative_path}/` создан файл '
@@ -47,6 +51,7 @@ def test_backend_dockerfile_exists(backend_dir_info: tuple[Path, str],
 
 def test_backend_dokerfile_content(backend_dir_info: tuple[Path, str],
                                    dockerfile_name: str):
+    """Make a safe."""
     path, _ = backend_dir_info
     with open(path / dockerfile_name, encoding='utf-8', errors='ignore') as f:
         dockerfile_content = f.read()
@@ -59,6 +64,7 @@ def test_backend_dokerfile_content(backend_dir_info: tuple[Path, str],
 
 
 def safely_load_yaml_file(path_to_file: Path) -> dict[str, Union[dict, str]]:
+    """Make a safe."""
     with open(path_to_file, 'r', encoding='utf-8', errors='ignore') as stream:
         try:
             file_content = yaml.safe_load(stream)
@@ -73,6 +79,7 @@ def safely_load_yaml_file(path_to_file: Path) -> dict[str, Union[dict, str]]:
 
 
 def test_workflow_file(base_dir: Path, workflow_file_name: str):
+    """Make a safe."""
     path_to_file = base_dir / workflow_file_name
     assert path_to_file.is_file(), (
         f'Убедитесь, что корневая директория проекта содержит файл '
@@ -86,6 +93,7 @@ def test_workflow_file(base_dir: Path, workflow_file_name: str):
 
 
 def test_requirements_location(backend_dir_info: tuple[Path, str]):
+    """Make a safe."""
     backend_path, relative_backend_path = backend_dir_info
     requirements_file_name = 'requirements.txt'
     path_to_file = backend_path / requirements_file_name
@@ -97,6 +105,7 @@ def test_requirements_location(backend_dir_info: tuple[Path, str]):
 
 def has_forbiden_keyword(file_content: dict[str, Union[dict, str]],
                          forbidden_keyword: str) -> bool:
+    """Make a safe."""
     is_forbidden_keyword_used = False
     for key, value in file_content.items():
         if isinstance(value, dict):
@@ -109,6 +118,7 @@ def has_forbiden_keyword(file_content: dict[str, Union[dict, str]],
 
 def test_docker_compose_prod_file_exists(base_dir: Path,
                                          docker_compose_prod_file_name: str):
+    """Make a safe."""
     path_to_file = base_dir / docker_compose_prod_file_name
     assert path_to_file.is_file(), (
         f'Убедитесь, что корневая директория проекта содержит файл '
