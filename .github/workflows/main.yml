@@ -61,6 +61,7 @@ jobs:
           context: ./backend/
           push: true
           tags: posk43/kittygram_backend:latest
+
   frontend_tests:
     runs-on: ubuntu-latest
 
