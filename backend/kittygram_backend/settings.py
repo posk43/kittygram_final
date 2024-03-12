@@ -10,11 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key')
 
-debug_env = os.getenv('DEBUG', '').lower()
+DEBUG = False
 
-DEBUG = debug_env == 'true'
-
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', default='127.0.0.1, localhost').strip().split(', ')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS',
+                          default=('127.0.0.1,'
+                                   ' localhost')).strip().split(', ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -100,6 +100,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'collected_static'
