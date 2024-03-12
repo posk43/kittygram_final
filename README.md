@@ -1,5 +1,5 @@
 # Kittygram Project
-
+[![Main Kittygram Workflow](https://github.com/posk43/kittygram_final/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/posk43/kittygram_final/actions/workflows/main.yml)
 ## Описание
 
 Kittygram - это веб-приложение для обмена фотографиями котиков. Taski - это другой проект, связанный с задачами.
@@ -25,7 +25,7 @@ repo_owner: ваш_логин_на_гитхабе
 kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
 taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
 dockerhub_username: ваш_логин_на_докерхабе
-```
+
 
 Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
 
@@ -45,12 +45,12 @@ dockerhub_username: ваш_логин_на_докерхабе
 ## Как проверить работу с помощью автотестов 
  
 В корне репозитория создайте файл tests.yml со следующим содержимым: 
-```yaml 
+yaml 
 repo_owner: ваш_логин_на_гитхабе 
 kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram 
 taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski 
 dockerhub_username: ваш_логин_на_докерхабе 
-``` 
+
  
 Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта. 
  
