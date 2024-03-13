@@ -14,11 +14,6 @@ debug_env = os.getenv('DEBUG', '').lower()
 
 DEBUG = debug_env == 'true'
 
-if DEBUG:
-    print("Отладочный режим включен")
-else:
-    print("Отладочный режим выключен")
-
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS',
                           default=('127.0.0.1,'
                                    ' localhost')).strip().split(', ')
